@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-//usamos las rutas de los usuarios
-app.use(require('./routes/usuario'));
+//usamos todas las rutas 
+app.use(require('./routes/index'));
 
 
 //conectando a la bd
