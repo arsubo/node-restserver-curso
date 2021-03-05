@@ -101,9 +101,10 @@ const mostrarImagen = async (req, res = response) => {
         //const pathImagen = path.join(__dirname, '../uploads', coleccion, modelo.img);
         const pathImagen = modelo.img;
 
-        if (fs.existsSync(pathImagen)) {
-            return res.sendFile(pathImagen)
-        }
+
+        return res.sendFile(pathImagen)
+
+
 
     } else {
 
