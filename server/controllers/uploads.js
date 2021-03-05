@@ -98,7 +98,8 @@ const mostrarImagen = async (req, res = response) => {
     //limpiar imágenes previas
     if (modelo.img) {
         //hay que borrar la imagen del servidor
-        const pathImagen = path.join(__dirname, '../uploads', coleccion, modelo.img);
+        //const pathImagen = path.join(__dirname, '../uploads', coleccion, modelo.img);
+        const pathImagen = modelo.img;
 
         if (fs.existsSync(pathImagen)) {
             return res.sendFile(pathImagen)
