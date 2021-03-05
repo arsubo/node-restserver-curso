@@ -48,11 +48,55 @@ const existeProductoPorId = async (id) => {
     }
 }
 
+/**
+ * Validar colecciones permitidas
+ */
+
+const coleccionesPermitidas = (coleccion = '', colecciones = []) => {
+
+    const incluida = colecciones.includes(coleccion);
+    let result = true;
+
+    if (!incluida) {
+        throw new Error(`La coleccion ${coleccion} no es permitida, ${colecciones}`);
+
+    }
+
+    return result;
+}
+
+const validarIDColeccion = async (coleccion, id) => {
+
+    let modelo;
+
+    switch (coleccion) {
+        case 'usuarios':
+            modelo = await Usuario.findById(id);
+            if (!modelo) {
+                throw new Error`No existe un usuario con el id: ${id}`;
+            }
+
+            break;
+        case 'productos':
+            modelo = await Producto.findById(id);
+            if (!modelo) {
+                throw new Error`No existe un producto con el id: ${id}`;
+            }
+            break;
+        default:
+            return res.status(500).json({ ok: false, msg: 'actualizaci no implementada' })
+    }
+
+    return modelo;
+}
+
 
 module.exports = {
     esRoleValido,
     emailExiste,
     existeUsuarioPorId,
     existeCategoriaPorId,
-    existeProductoPorId
+    existeProductoPorId,
+    coleccionesPermitidas,
+    validarIDColeccion
 }

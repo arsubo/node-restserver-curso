@@ -1,4 +1,5 @@
 const auth = require('./auth');
+const uploads = require('./uploads');
 const categorias = require('./categorias');
 const productos = require('./productos');
 const usuario = require('./usuario');
@@ -9,5 +10,6 @@ module.exports = {
     ...categorias,
     ...productos,
     ...usuario,
-    ...buscar
+    ...buscar,
+    ...uploads
 }
