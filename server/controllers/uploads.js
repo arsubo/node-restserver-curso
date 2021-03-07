@@ -100,11 +100,7 @@ const mostrarImagen = async (req, res = response) => {
         //hay que borrar la imagen del servidor
         //const pathImagen = path.join(__dirname, '../uploads', coleccion, modelo.img);
         const pathImagen = modelo.img;
-
-
-        return res.sendFile(pathImagen)
-
-
+        return res.json({ ok: true, pathImg: pathImagen })
 
     } else {
 
